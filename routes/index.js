@@ -1,9 +1,14 @@
 import express from 'express';
+import AuthController from '../controllers/AuthController';
 import UsersController from '../controllers/UsersController';
 
 const router = express.Router();
 
-// Endpoint to handle user creation
-router.post('/users', UsersController.postNew);
+// Authentication routes
+router.get('/connect', AuthController.getConnect);
+router.get('/disconnect', AuthController.getDisconnect);
+
+// User route
+router.get('/users/me', UsersController.getMe);
 
 export default router;
